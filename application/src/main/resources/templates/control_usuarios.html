@@ -1,17 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:td="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/menu_principal.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/control_usuarios.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/regis_usuarios.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-    <title>Menu Principal</title>
+    <title>Control de Usuarios</title>
+    <script type="text/javascript">
+        function hide_components(){
+            document.getElementById("regis_container").style.display='none';
+            document.getElementById("control_container").style.display='none';
+        }
+        function show_components(){
+            let val_list = $("#option_usuarios").val();
+            if(val_list == 0){
+                document.getElementById("control_container").style.display='';
+            }else if(val_list == 1){
+                document.getElementById("regis_container").style.display='';
+            }
+        }
+    </script>
 </head>
-<body class="principal">
+<body class="principal" onload="hide_components()">
 <div>
     <div class="barra">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,13 +57,31 @@
         </nav>
     </div>
     <br>
-    <div class="Menu">
+    <div class="usuarios">
+        <h2>Control de usuarios</h2>
+        <br>
+        <div class="seleccionador_option_usuarios">
+            <select id="option_usuarios" class="form-select" aria-label="Default select example">
+                <option value="0" selected>Informacion Usuarios</option>
+                <option value="1">Registrar Usuario</option>
+            </select>
+            &nbsp;&nbsp;
+            <button type="button" onclick="show_components()" class="btn btn-secondary">Seleccionar</button>
+        </div>
+        <br>
+        <br>
+        <div class="required-forms">
+            <div id="regis_container">
+                <div th:include="regis_usuarios.html">
 
-    </div>
-</div>
-<div class="footer">
-    <div th:replace="footer :: footer">
+                </div>
+            </div>
+            <div id="control_container">
+                <div>
 
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

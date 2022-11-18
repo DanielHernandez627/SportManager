@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="contenidoMenu">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" style="text-align: right;" href="index" >Inicio</a>
+
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
         <form th:action="@{/autenticar}" method="post" th:object="${estudiante}">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Correo Electronico</span>
-                <input type="text" name="email" required class="form-control" placeholder="" aria-label="email" aria-describedby="basic-addon1">
+                <input type="email" name="email" required class="form-control" placeholder="" aria-label="email" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon2">Contraseña&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

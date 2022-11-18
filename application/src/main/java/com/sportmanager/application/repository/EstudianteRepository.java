@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @EnableJpaRepositories
 public interface EstudianteRepository extends JpaRepository<Estudiante, Integer> {
@@ -13,4 +15,6 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
     @Query("SELECT u FROM estudiantes u WHERE u.email=?1")
     Estudiante findByEmailPass(String email);
 
+    @Override
+    <S extends Estudiante> S save(S entity);
 }

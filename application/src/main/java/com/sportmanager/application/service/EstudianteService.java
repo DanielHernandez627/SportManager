@@ -30,4 +30,14 @@ public class EstudianteService {
         return state;
     }
 
+    public boolean registrar(Estudiante estudiante){
+        boolean state = false;
+        estudiante.setActivo(true);
+        var registro = estudianteRepository.save(estudiante);
+        if (registro != null){
+            state = true;
+        }
+        return state;
+    }
+
 }

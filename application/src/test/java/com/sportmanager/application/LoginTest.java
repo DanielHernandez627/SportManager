@@ -20,19 +20,19 @@ public class LoginTest {
 
     @Test
     public void testOkLogin(){
+        String email = "prueba@prueba.com";
+        String pass = managementPass.encript("123");
+
+        assertTrue(estudianteService.autenticar(email,pass));
+    }
+
+    @Test
+    public void testFailedLogin(){
         Faker faker = new Faker();
         String email = faker.gameOfThrones().house() + "@gmail.com";
         String pass =  managementPass.encript(faker.animal().name());
 
         assertFalse(estudianteService.autenticar(email,pass));
-    }
-
-    @Test
-    public void testFailedLogin(){
-        String email = "prueba@prueba.com";
-        String pass = managementPass.encript("123");
-
-        assertTrue(estudianteService.autenticar(email,pass));
     }
 
 }

@@ -16,6 +16,8 @@
         function hide_components(){
             document.getElementById("regis_container").style.display='none';
             document.getElementById("control_container").style.display='none';
+            const botonEnviar = document.getElementById('idEnviar');
+            botonEnviar.disabled = true;
         }
         function show_components(){
             let val_list = $("#option_usuarios").val();
@@ -25,6 +27,19 @@
                 document.getElementById("regis_container").style.display='';
             }
         }
+
+        function verifyPass(){
+            const botonEnviar = document.getElementById('idEnviar');
+            let passc = $("#passc").val();
+            let pass = $("#pass").val();
+            if(pass == passc){
+                 $('#confirmacion').val("Correcto");
+                 botonEnviar.disabled = false;
+            }else{
+                 $('#confirmacion').val("Contraseñas no coinciden");
+            }
+        }
+
     </script>
 </head>
 <body class="principal" onload="hide_components()">

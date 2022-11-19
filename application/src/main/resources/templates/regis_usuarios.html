@@ -1,3 +1,8 @@
+<script type="text/javascript">
+function validador (){
+
+}
+</script>
 <div xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="form-registro">
         <h2>Registrar</h2>
@@ -49,14 +54,15 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon11">Contraseña</span>
-                    <input type="password" name="password" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                    <input type="password" name="password" id="pass" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon12">Confirmar Contraseña</span>
-                    <input type="password" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                    <input type="password" onkeyup="verifyPass()" class="form-control" id="passc" placeholder="" aria-label="" aria-describedby="basic-addon1">
                 </div>
+                <input id="confirmacion" type="" readonly name="validador">
                 <div class="btn-ingresar">
-                    <button type="submit" class="btn btn-success">Registrar</button>
+                    <button id="idEnviar" type="submit" class="btn btn-success">Registrar</button>
                 </div>
             </form>
         </div>

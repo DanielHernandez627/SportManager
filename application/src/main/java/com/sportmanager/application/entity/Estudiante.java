@@ -20,11 +20,11 @@ public class Estudiante implements Serializable {
 
     private String nombre;
     private String apellido;
-    private int documento;
+    private Long documento;
     private String tipo_documento;
     private String email;
     private String fecha_nacimiento;
-    private int estatura;
+    private String estatura;
     private int peso;
     private String genero;
     private boolean activo;

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:td="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/control_usuarios.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/regis_usuarios.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <script language="JavaScript" type="text/javascript" th:src="@{/js/obtener_info_user.js}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <title>Control de Usuarios</title>
+    <script type="text/javascript">
+        function hide_components(){
+            document.getElementById("regis_container").style.display='none';
+            document.getElementById("control_container").style.display='none';
+            const botonEnviar = document.getElementById('idEnviar');
+            const botonEnviar2 = document.getElementById('idEnviar2');
+            botonEnviar.disabled = true;
+            botonEnviar2.disabled = false;
+        }
+        function show_components(){
+            let val_list = $("#option_usuarios").val();
+            if(val_list == 0){
+                document.getElementById("control_container").style.display='';
+                document.getElementById("regis_container").style.display='none';
+            }else if(val_list == 1){
+                document.getElementById("control_container").style.display='none';
+                document.getElementById("regis_container").style.display='';
+            }
+        }
+
+        function verifyPass(){
+            const botonEnviar = document.getElementById('idEnviar');
+            let passc = $("#passc").val();
+            let pass = $("#pass").val();
+            if(pass == passc){
+                 $('#confirmacion').val("Correcto");
+                 botonEnviar.disabled = false;
+            }else{
+                 $('#confirmacion').val("Contraseñas no coinciden");
+            }
+        }
+
+        function verifyPass2(){
+            const botonEnviar2 = document.getElementById('idEnviar2');
+            let passc = $("#passc2").val();
+            let pass = $("#pass2").val();
+            if(pass == passc){
+                 $('#confirmacion2').val("Correcto");
+                 botonEnviar2.disabled = false;
+            }else{
+                botonEnviar2.disabled = true;
+                $('#confirmacion2').val("Contraseñas no coinciden");
+            }
+        }
+    </script>
+</head>
+<body class="principal" onload="hide_components()">
+<div>
+    <div class="barra">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.php">SportManager</a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#contenidoMenu"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="contenidoMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" style="text-align: right;" th:href="@{/controlusuario}" >Control de Usuarios</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" style="text-align: right;" href="index" >Informacion de pago</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" style="text-align: right;" href="index" >Cerrar Sesion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <div class="usuarios">
+        <h2>Control de usuarios</h2>
+        <br>
+        <div class="seleccionador_option_usuarios">
+            <select id="option_usuarios" class="form-select" aria-label="Default select example">
+                <option value="0" selected>Informacion Usuarios</option>
+                <option value="1">Registrar Usuario</option>
+            </select>&nbsp;&nbsp;
+            <button type="button" onclick="show_components()" class="btn btn-secondary">Seleccionar</button>
+        </div>
+        <br>
+        <br>
+        <p>Seleccionar estudiante a actulizar</p>
+        <div class="students">
+            <select id="option_students" name="estudiantes" class="form-select">
+                <option th:each="Item : ${estudiantesSelect}"
+                th:value="${Item.id}"
+                th:text="${Item.nombre}"
+                th:selected="true">
+                </option>
+            </select>&nbsp;&nbsp;
+            <button type="button" onclick="search_Student()" class="btn btn-secondary">Seleccionar</button>
+        </div>
+        <br>
+        <br>
+        <div class="required-forms">
+            <div id="regis_container">
+                <div th:include="regis_usuarios.html">
+
+                </div>
+            </div>
+            <div id="control_container">
+                <div th:include="info_usuarios">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

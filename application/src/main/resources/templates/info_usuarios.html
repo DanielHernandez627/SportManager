@@ -1,0 +1,66 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="form-actulizar">
+        <h2>Registrar</h2>
+        <div class="container-registro">
+            <form th:action="@{/updateUser}" name="form-edit-students" method="post" th:object="${actulizarestudiante}">
+                <input id="id_s" name="id" style="display:none;">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Nombres</span>
+                    <input type="text" id="nombre2" name="nombre" class="form-control" placeholder="Nombres" aria-label="Nombres" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon2">Apellidos</span>
+                    <input id="apellido2" type="text" name="apellido" class="form-control" placeholder="Apellidos" aria-label="Apellidos" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon4">Tipo de Documento</span>
+                    <select class="form-select" id="sdocument" name="tipo_documento" aria-label="Default select example">
+                        <option value="TI" selected>T.I</option>
+                        <option value="CC" >C.C</option>
+                        <option value="PS">Pasaporte</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Numero de Documento</span>
+                    <input type="text" id="documento2" name="documento" class="form-control" placeholder="Numero de Documento" aria-label="Numero de Documento" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon5">Correo Electronico</span>
+                    <input type="email" id="email2" name="email" class="form-control" placeholder="@" aria-label="@" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon6">Fecha de Nacimiento</span>
+                    <input type="date" id="fecha2" name="fecha_nacimiento" class="form-control" placeholder="00-00-0000" aria-label="00-00-0000" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon7">Estura</span>
+                    <input type="text" id="estatura2" name="estatura" class="form-control" placeholder="1.61" aria-label="1.61" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon8">Peso</span>
+                    <input type="number" id="peso2" name="peso" class="form-control" placeholder="0" aria-label="0" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon10">Genero</span>
+                    <select id="sgenero" class="form-select" name="genero" aria-label="Default select example">
+                        <option value="0" selected>Seleccione una opcion</option>
+                        <option value="F" >Femenino</option>
+                        <option value="M">Masculino</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon11">Contraseña</span>
+                    <input type="password" name="password" id="pass2" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon12">Confirmar Contraseña</span>
+                    <input type="password" onkeyup="verifyPass2()" class="form-control" id="passc2" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                </div>
+                <input id="confirmacion2" type="" readonly name="validador">
+                <div class="btn-ingresar">
+                    <button id="idEnviar2" type="submit" class="btn btn-success">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

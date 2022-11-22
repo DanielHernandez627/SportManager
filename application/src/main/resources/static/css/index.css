@@ -1,0 +1,12 @@
+.principal{
+    background: no-repeat;
+    background-image: linear-gradient(to right top, #c2d7f8, #c0d4f5, #bed1f1, #bbcfee, #b9cceb);
+    height: 100vh;
+    width: 100%;
+}
+
+.login{
+    width: 45%;
+    margin: 0 auto;
+    text-align: center;
+}

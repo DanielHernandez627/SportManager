@@ -1,0 +1,35 @@
+.container-registro{
+    width: 45%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-registro{
+    background: no-repeat;
+    background-image: linear-gradient(to right top, #c2d7f8, #c0d4f5, #bed1f1, #bbcfee, #b9cceb);
+    height: 75vh;
+    width: 100%;
+}
+
+.form-actulizar{
+    background: no-repeat;
+    background-image: linear-gradient(to right top, #c2d7f8, #c0d4f5, #bed1f1, #bbcfee, #b9cceb);
+    height: 75vh;
+    width: 100%;
+}
+
+#confirmacion{
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    color: red;
+}
+
+#confirmacion2{
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    color: red;
+}

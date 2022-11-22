@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 public class EstudiantesController {
 
@@ -21,6 +24,11 @@ public class EstudiantesController {
     public String registrar(@ModelAttribute("estudiante")Estudiante estudiante) {
         String pass;
         String redirectFailed = "redirect:/insertUser?error";
+
+        Date fecha = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fech_ingreso = format.format(fecha);
+        estudiante.setFecha_incripcion(fech_ingreso);
 
         pass = managementPass.encript(estudiante.getPassword());
         estudiante.setPassword(pass);
@@ -37,8 +45,6 @@ public class EstudiantesController {
         String pass;
         pass = managementPass.encript(estudiante.getPassword());
         estudiante.setPassword(pass);
-
-        AppController controller;
 
         if (!estudianteService.actulizar_estudiante(estudiante)){
             return "redirect:/updateUser?error";

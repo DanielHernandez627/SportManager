@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,16 +31,24 @@ public class TestRegistro {
             numero = numero + String.valueOf((int) (Math.random() * 9 + 1));
         }
 
+        Date fecha = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fech_ingreso = format.format(fecha);
+
         String name = faker.name().firstName();
 
-        Estudiante estudiante = new Estudiante(0,name,faker.name().lastName(),Long.parseLong(numero),"TI",name + "@gmail.com","2000-01-01","1.61",50,"M",true,managementPass.encript(faker.gameOfThrones().dragon()));
+        Estudiante estudiante = new Estudiante(0,name,faker.name().lastName(),Long.parseLong(numero),"TI",name + "@gmail.com","2000-01-01",fech_ingreso,"1.61",50,"F",true,managementPass.encript(faker.gameOfThrones().dragon()));
 
         assertTrue(estudianteService.registrar(estudiante));
     }
 
     @Test
     public void testFailedRegistrar(){
-        Estudiante estudiante = new Estudiante(0,"prueba","prueba",Long.parseLong("123456789"),"TI","prueba@gmail.com","2000-01-01","1.61",50,"M",true,"MTIz");
+        Date fecha = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fech_ingreso = format.format(fecha);
+
+        Estudiante estudiante = new Estudiante(0,"prueba","prueba",Long.parseLong("123456789"),"TI","prueba@gmail.com","2000-01-01",fech_ingreso,"1.61",50,"M",true,"MTIz");
         try{
             estudianteService.registrar(estudiante);
         }catch (Exception ex){

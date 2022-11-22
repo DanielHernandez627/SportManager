@@ -24,6 +24,7 @@ public class Estudiante implements Serializable {
     private String tipo_documento;
     private String email;
     private String fecha_nacimiento;
+    private String fecha_incripcion;
     private String estatura;
     private int peso;
     private String genero;

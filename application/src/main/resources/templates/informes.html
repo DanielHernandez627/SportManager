@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu_principal.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/informes.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link rel="shortcut icon" th:href="@{/img/ball.ico}" type="image/x-icon">
-    <title>Index</title>
+
+    <title>Menu Principal</title>
 </head>
 <body class="principal">
 <div>
@@ -28,30 +29,41 @@
             <div class="collapse navbar-collapse justify-content-end" id="contenidoMenu">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-
+                        <a class="nav-link" style="text-align: right;" th:href="@{/controlusuario}" >Control de Usuarios</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" style="text-align: right;" th:href="@{/controlusuario}" >Informes</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" style="text-align: right;" href="index" >Informacion de pago</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" style="text-align: right;" href="index" >Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
     <br>
-    <div class="login">
-        <h2>Iniciar Sesion</h2>
-        <form th:action="@{/autenticar}" method="post" th:object="${estudiante}">
+    <div class="informes">
+        <center>
+        <div class="interface-table">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Correo Electronico</span>
-                <input type="email" name="email" required class="form-control" placeholder="" aria-label="email" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon5">Edad</span>
+                <input type="number" id="edad" name="edad" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon2">Contraseña&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <input type="password" name="password" required class="form-control" placeholder="" aria-label="password" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon6">Fecha de Ingreso</span>
+                <input type="date" id="fecha2" name="fecha_nacimiento" class="form-control" placeholder="00-00-0000" aria-label="00-00-0000" aria-describedby="basic-addon1">
             </div>
-            <center>
-                <div class="btn-ingresar">
-                    <button type="submit" class="btn btn-success">Ingresar</button>
-                </div>
-            </center>
-        </form>
+            <button type="button" onclick="" class="btn btn-secondary">Solicitar</button>
+        </div>
+        </center>
+        <div class="table-container" id="table-containerid">
+            <table class="table" id="elementos">
+
+            </table>
+        </div>
     </div>
 </div>
 <div class="footer">

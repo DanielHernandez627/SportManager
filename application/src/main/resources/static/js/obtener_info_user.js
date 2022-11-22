@@ -8,7 +8,6 @@ function search_Student(){
         return response.json();
     }).then((data) => {
         let students = data;
-        console.log(students);
         $('#id_s').val(students["id"]);
         $('#nombre2').val(students["nombre"]);
         $('#apellido2').val(students["apellido"]);

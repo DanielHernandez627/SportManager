@@ -34,4 +34,14 @@ public class EstudianteRestController {
         return entity;
     }
 
+    /*@GetMapping("/{edad}/{fecha}")
+    public ResponseEntity<Estudiante> getStudentsTable(@PathVariable("id") int id,@PathVariable("fecha") String fecha){
+
+        HttpHeaders headers = new HttpHeaders();
+        Estudiante estudiante = new Estudiante();
+
+        return
+
+    }*/
+
 }

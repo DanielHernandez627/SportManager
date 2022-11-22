@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Log4j2
@@ -40,4 +41,21 @@ public class EstudianteService {
         return state;
     }
 
+    public List listarEstudiantes(){
+        List<Estudiante> estudianteList = estudianteRepository.findAll();
+        return estudianteList;
+    }
+
+    public Estudiante obtener_estudiantes(int id){
+        return estudianteRepository.findById(id);
+    }
+
+    public boolean actulizar_estudiante(Estudiante estudiante){
+        var state = estudianteRepository.save(estudiante);
+        if (state != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

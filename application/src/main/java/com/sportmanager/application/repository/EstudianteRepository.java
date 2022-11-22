@@ -1,6 +1,7 @@
 package com.sportmanager.application.repository;
 
 import com.sportmanager.application.entity.Estudiante;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,4 +18,10 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
 
     @Override
     <S extends Estudiante> S save(S entity);
+
+    @Override
+    List<Estudiante> findAll();
+
+    @Query("SELECT u FROM estudiantes u WHERE u.id=?1")
+    Estudiante findById(int id);
 }

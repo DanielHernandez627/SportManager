@@ -18,3 +18,13 @@
 #option_usuarios{
     width: 45%;
 }
+
+#option_students{
+    width: 45%;
+}
+
+.students{
+    display:flex;
+    align-content: center;
+    justify-content: center;
+}

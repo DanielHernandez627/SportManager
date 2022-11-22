@@ -18,19 +18,32 @@ public class EstudiantesController {
     ManagementPass managementPass;
 
     @PostMapping("/insertUser")
-    public String registrar(@ModelAttribute("estudiante")Estudiante estudiante){
+    public String registrar(@ModelAttribute("estudiante")Estudiante estudiante) {
         String pass;
         String redirectFailed = "redirect:/insertUser?error";
 
-        pass = managementPass.encript(estudiante.getPassword());;
+        pass = managementPass.encript(estudiante.getPassword());
         estudiante.setPassword(pass);
 
-        if (!estudianteService.registrar(estudiante)){
+        if (!estudianteService.registrar(estudiante)) {
             return redirectFailed;
         }
 
-        return "control_usuarios";
+        return "menu_pricipal";
     }
 
+    @PostMapping("/updateUser")
+    public String actulizar(@ModelAttribute("actulizarestudiante")Estudiante estudiante){
+        String pass;
+        pass = managementPass.encript(estudiante.getPassword());
+        estudiante.setPassword(pass);
 
+        AppController controller;
+
+        if (!estudianteService.actulizar_estudiante(estudiante)){
+            return "redirect:/updateUser?error";
+        }
+
+        return "menu_pricipal";
+    }
 }

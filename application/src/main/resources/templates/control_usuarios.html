@@ -8,8 +8,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/control_usuarios.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/regis_usuarios.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <script language="JavaScript" type="text/javascript" th:src="@{/js/obtener_info_user.js}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <title>Control de Usuarios</title>
     <script type="text/javascript">
@@ -17,13 +19,17 @@
             document.getElementById("regis_container").style.display='none';
             document.getElementById("control_container").style.display='none';
             const botonEnviar = document.getElementById('idEnviar');
+            const botonEnviar2 = document.getElementById('idEnviar2');
             botonEnviar.disabled = true;
+            botonEnviar2.disabled = false;
         }
         function show_components(){
             let val_list = $("#option_usuarios").val();
             if(val_list == 0){
                 document.getElementById("control_container").style.display='';
+                document.getElementById("regis_container").style.display='none';
             }else if(val_list == 1){
+                document.getElementById("control_container").style.display='none';
                 document.getElementById("regis_container").style.display='';
             }
         }
@@ -40,6 +46,18 @@
             }
         }
 
+        function verifyPass2(){
+            const botonEnviar2 = document.getElementById('idEnviar2');
+            let passc = $("#passc2").val();
+            let pass = $("#pass2").val();
+            if(pass == passc){
+                 $('#confirmacion2').val("Correcto");
+                 botonEnviar2.disabled = false;
+            }else{
+                botonEnviar2.disabled = true;
+                $('#confirmacion2').val("Contraseñas no coinciden");
+            }
+        }
     </script>
 </head>
 <body class="principal" onload="hide_components()">
@@ -79,9 +97,21 @@
             <select id="option_usuarios" class="form-select" aria-label="Default select example">
                 <option value="0" selected>Informacion Usuarios</option>
                 <option value="1">Registrar Usuario</option>
-            </select>
-            &nbsp;&nbsp;
+            </select>&nbsp;&nbsp;
             <button type="button" onclick="show_components()" class="btn btn-secondary">Seleccionar</button>
+        </div>
+        <br>
+        <br>
+        <p>Seleccionar estudiante a actulizar</p>
+        <div class="students">
+            <select id="option_students" name="estudiantes" class="form-select">
+                <option th:each="Item : ${estudiantesSelect}"
+                th:value="${Item.id}"
+                th:text="${Item.nombre}"
+                th:selected="true">
+                </option>
+            </select>&nbsp;&nbsp;
+            <button type="button" onclick="search_Student()" class="btn btn-secondary">Seleccionar</button>
         </div>
         <br>
         <br>
@@ -92,7 +122,7 @@
                 </div>
             </div>
             <div id="control_container">
-                <div>
+                <div th:include="info_usuarios">
 
                 </div>
             </div>

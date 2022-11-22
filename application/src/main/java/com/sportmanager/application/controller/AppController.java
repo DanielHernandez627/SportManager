@@ -27,4 +27,10 @@ public class AppController {
         model.addAttribute("estudiantesSelect",estudianteList);
         return "control_usuarios";
     }
+
+    @GetMapping("/informes")
+    public String informeusuarios(Model model){
+
+        return "informes";
+    }
 }

@@ -24,4 +24,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Integer>
 
     @Query("SELECT u FROM estudiantes u WHERE u.id=?1")
     Estudiante findById(int id);
+
+  /*  @Query("SELECT u FROM estudiantes u WHERE u.fecha_inscripcion=?1")
+    Estudiante findByFecha(String fechaingreso);*/
 }
